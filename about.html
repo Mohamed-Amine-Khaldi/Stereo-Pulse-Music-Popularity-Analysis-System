@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About — Stereo Pulse</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="base.css">
+  <link rel="stylesheet" href="navbar.css">
+  <link rel="stylesheet" href="about.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="container">
+      <a href="index.html" class="logo">
+        <img src="logo.svg" alt="Stereo Pulse logo">
+        <span class="logo-text">Stereo<span>Pulse</span></span>
+      </a>
+      <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation"><span></span></button>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="index.html" class="nav-link">Home</a></li>
+        <li><a href="data-management.html" class="nav-link">Data Management</a></li>
+        <li><a href="search.html" class="nav-link">Search</a></li>
+        <li><a href="statistics.html" class="nav-link">Statistics</a></li>
+        <li><a href="about.html" class="nav-link">About</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <main>
+    <div class="container">
+
+      <div class="section-head">
+        <span class="eyebrow">About This Project</span>
+        <h2>How Stereo Pulse works</h2>
+        <p class="muted">A 19-record music popularity catalog, built with plain HTML, CSS, and JavaScript for the Web Programming final project.</p>
+      </div>
+
+      <div class="about-layout">
+
+        <div>
+          <h3>Custom business rules</h3>
+          <div class="rules-grid grid">
+            <div class="card rule-card">
+              <span class="rule-num">01</span>
+              <div>
+                <h3>Top Charts eligibility</h3>
+                <p>A track needs a popularity score of 50 or higher to be marked <strong>Top Charts</strong>. Anything below stays in the catalog but is labelled <strong>Not Charting</strong> and excluded from the charts bar graph.</p>
+              </div>
+            </div>
+            <div class="card rule-card">
+              <span class="rule-num">02</span>
+              <div>
+                <h3>Low Reach flag</h3>
+                <p>Any track under 50 million streams is flagged <strong>Low Reach</strong>, regardless of its popularity score — a track can score well per listen but still have a small audience.</p>
+              </div>
+            </div>
+            <div class="card rule-card">
+              <span class="rule-num">03</span>
+              <div>
+                <h3>Genre cap</h3>
+                <p>A track cannot carry more than 3 genres. The Data Management form blocks a 4th checkbox the moment it's ticked, with an inline message explaining why.</p>
+              </div>
+            </div>
+            <div class="card rule-card">
+              <span class="rule-num">+</span>
+              <div>
+                <h3>Trending badge (bonus)</h3>
+                <p>Tracks growing 15% or more month-over-month get a 🔥 <strong>Trending</strong> badge on the Home and Data Management pages.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <div class="card">
+            <h3>Project info</h3>
+            <div class="meta-list">
+              <div class="meta-row"><span class="k">Topic</span><span class="v">#6 — Music Popularity Analysis</span></div>
+              <div class="meta-row"><span class="k">Student ID</span><span class="v">20231019</span></div>
+              <div class="meta-row"><span class="k">Dataset size</span><span class="v">19 records</span></div>
+              <div class="meta-row"><span class="k">Storage</span><span class="v">localStorage</span></div>
+              <div class="meta-row"><span class="k">Pages</span><span class="v">5</span></div>
+            </div>
+          </div>
+
+          <div class="card" style="margin-top:20px;">
+            <h3>Built with</h3>
+            <div class="tech-pills">
+              <span class="tech-pill">HTML5</span>
+              <span class="tech-pill">CSS3 / Flexbox / Grid</span>
+              <span class="tech-pill">Vanilla JavaScript</span>
+              <span class="tech-pill">localStorage</span>
+              <span class="tech-pill">Chart.js</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <span class="footer-note">Stereo Pulse · Music Popularity Analysis System · Student ID 20231019</span>
+      <div class="footer-links">
+        <a href="about.html">About this project</a>
+        <a href="https://www.chartjs.org" target="_blank" rel="noopener">Chart.js</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="navbar.js"></script>
+</body>
+</html>

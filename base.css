@@ -1,0 +1,233 @@
+/* =========================================================
+   base.css
+   Shared styles loaded on EVERY page (first, before the
+   page-specific CSS file). Colors and sizes here are
+   written directly (no CSS variables) so each rule can be
+   edited on its own without touching anything else.
+   ========================================================= */
+
+/* Reset: removes the browser's default sizing math everywhere */
+* { box-sizing: border-box; }
+
+/* Smooth scroll when jumping to an anchor link */
+html { scroll-behavior: smooth; }
+
+/* Page background color + the two soft glow blobs behind the content */
+body {
+  margin: 0;
+  background: #0a0e27;
+  background-image:
+    radial-gradient(640px circle at 90% -10%, rgba(52, 224, 224, 0.10), transparent 60%),
+    radial-gradient(560px circle at -10% 20%, rgba(255, 180, 84, 0.08), transparent 60%);
+  color: #36f314;
+  font-family: "Plus Jakarta Sans", sans-serif;
+  font-size: 16px;
+  line-height: 1.55;
+  min-height: 100vh;
+}
+
+/* Headings (h1-h4) everywhere on the site: title font + spacing */
+h1, h2, h3, h4 {
+  font-family: "Space Grotesk", sans-serif;
+  font-weight: 600;
+  line-height: 1.15;
+  margin: 0 0 0.5em;
+  letter-spacing: -0.01em;
+  color :#fbeded
+}
+h1 { font-size: clamp(2rem, 4vw, 3rem); }                 /* main page heading, e.g. "Track what the world is streaming..." */
+h2 { font-size: clamp(1.5rem, 2.6vw, 2.1rem); }            /* section headings, e.g. "Top 3 tracks by popularity" */
+h3 { font-size: 1.25rem; }                                 /* card/sub headings, e.g. track titles, rule titles */
+
+/* Body paragraph text color (muted gray-blue) used under headings everywhere */
+p { margin: 0 0 1em; color: #9aa1cf; }
+
+/* Link color (cyan) and underline-on-hover, used for nav links, footer links, "About this project" etc. */
+a { color: #34e0e0; text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+/* Images never overflow their container */
+img { max-width: 100%; display: block; }
+
+/* The centered max-width wrapper used on every page (header, main content, footer) */
+.container {
+  width: 100%;
+  max-width: 1140px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* Page content area: leaves room under the fixed navbar (72px tall) */
+main { display: block; padding-top: 108px; padding-bottom: 80px; }
+
+/* "Eyebrow" small uppercase label above a section title, e.g. "MUSIC POPULARITY ANALYSIS SYSTEM" on Home */
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 0.78rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #ffb454;
+  margin-bottom: 10px;
+}
+/* The short amber dash to the left of every eyebrow label */
+.eyebrow::before {
+  content: "";
+  width: 16px; height: 2px;
+  background: #ffb454;
+  display: inline-block;
+}
+
+/* Generic muted/gray text helper class, used for small notes under headings */
+.muted { color: #9aa1cf; }
+
+/* Spacing above a page's section blocks (used to separate header text from cards/grids below it) */
+.section-head { margin-bottom: 28px; }
+.section-head h2 { margin-bottom: 6px; }
+
+/* --- generic layout helpers (grid/flex spacing shortcuts used across all pages) --- */
+.grid { display: grid; gap: 20px; }
+.flex { display: flex; }
+.flex-between { display: flex; align-items: center; justify-content: space-between; }
+.flex-wrap { flex-wrap: wrap; }
+.gap-sm { gap: 8px; }
+.gap-md { gap: 16px; }
+
+/* The dark rounded "card" box used everywhere: stat cards, track cards, form card, chart cards, rule cards... */
+.card {
+  background: #121a3f;
+  border: 1px solid #2a3268;
+  border-radius: 14px;
+  padding: 24px;
+}
+
+/* --- BUTTONS: base shape/spacing shared by every button on the site --- */
+.btn {
+  font-family: "Plus Jakarta Sans", sans-serif;
+  font-weight: 600;
+  font-size: 0.92rem;
+  border-radius: 8px;
+  padding: 11px 20px;
+  border: 1px solid transparent;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: transform 0.15s ease, background 0.15s ease, border-color 0.15s ease;
+}
+.btn:active { transform: translateY(1px); }
+
+/* Primary button (solid amber) — e.g. "Add Track" / "Update Track", "View Statistics" */
+.btn-primary { background: #f4cc08; color: #1a1206; }
+.btn-primary:hover { background: #ffc476; }
+
+/* Secondary button (cyan outline) — e.g. "Manage Data" on the Home page */
+.btn-secondary { background: transparent; color: #34e0e0; border-color: #34e0e0; }
+.btn-secondary:hover { background: rgba(52, 224, 224, 0.16); }
+
+/* Ghost button (plain gray outline) — e.g. "Cancel", "Reset", "Reset filter", row "Edit" buttons */
+.btn-ghost { background: transparent; color: #00ff0d; border-color: #2a3268; }
+.btn-ghost:hover { color: #edeffb; border-color: #9aa1cf; }
+
+/* Danger button (red) — used only for "Delete" in the track table */
+.btn-danger { background: rgba(255, 122, 122, 0.16); color: #ff7a7a; border-color: #ff7a7a; }
+.btn-danger:hover { background: #ff7a7a; color: #1a0606; }
+
+/* Smaller button size — used for the row-level Edit/Delete buttons in tables */
+.btn-sm { padding: 7px 14px; font-size: 0.82rem; }
+.btn:disabled { opacity: 0.45; cursor: not-allowed; }
+
+/* --- BADGES: small pill labels, e.g. "Top Charts", "Not Charting", "Low Reach", "Trending" --- */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 0.74rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  padding: 4px 10px;
+  border-radius: 999px;
+  white-space: nowrap;
+}
+.badge-amber { background: rgba(255, 180, 84, 0.16); color: #ffb454; }   /* used for "Trending" */
+.badge-cyan { background: rgba(52, 224, 224, 0.16); color: #34e0e0; }    /* used for "Top Charts" */
+.badge-danger { background: rgba(255, 122, 122, 0.16); color: #ff7a7a; } /* used for "Low Reach" */
+.badge-muted { background: rgba(154, 161, 207, 0.14); color: #9aa1cf; }  /* used for "Not Charting" */
+
+/* --- FORM FIELDS: every text input, number input, select, and textarea on the site --- */
+label {
+  display: block;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: #9aa1cf;
+  margin-bottom: 6px;
+}
+input, select, textarea {
+  width: 100%;
+  background: #0a0e27;
+  border: 1px solid #2a3268;
+  color: #edeffb;
+  font-family: "Plus Jakarta Sans", sans-serif;
+  font-size: 0.95rem;
+  padding: 11px 13px;
+  border-radius: 8px;
+  outline: none;
+  transition: border-color 0.15s ease;
+}
+/* Cyan border when a field is focused/clicked into */
+input:focus, select:focus, textarea:focus { border-color: #34e0e0; }
+input::placeholder { color: #9aa1cf; opacity: 0.7; }
+
+.field { margin-bottom: 16px; }
+.field-row { display: flex; gap: 14px; flex-wrap: wrap; }
+.field-row > .field { flex: 1; min-width: 140px; }
+.checkbox-row { display: flex; align-items: center; gap: 8px; }
+.checkbox-row input { width: auto; }
+.hint { font-size: 0.78rem; color: #9aa1cf; margin-top: 4px; }
+
+/* Red validation message shown under the Data Management form (e.g. genre-cap warning) */
+.error-text { font-size: 0.8rem; color: #ff7a7a; margin-top: 6px; display: none; }
+.error-text.show { display: block; }
+
+/* --- TABLES: used in Data Management ("Track Catalog") and Search ("Results") --- */
+.table-wrap { overflow-x: auto; border: 1px solid #2a3268; border-radius: 14px; }
+table { width: 100%; border-collapse: collapse; font-size: 0.9rem; min-width: 640px; }
+thead th {
+  text-align: left;
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 0.75rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #9aa1cf;
+  background: #1a2350;
+  padding: 12px 16px;
+  border-bottom: 1px solid #2a3268;
+}
+tbody td { padding: 13px 16px; border-bottom: 1px solid #2a3268; vertical-align: middle; }
+tbody tr:last-child td { border-bottom: none; }
+tbody tr:hover { background: rgba(255, 255, 255, 0.02); }
+
+/* --- POPULARITY METER: the little colored progress bar showing a track's score (0-100) --- */
+.meter { display: flex; align-items: center; gap: 8px; min-width: 110px; }
+.meter-track { flex: 1; height: 6px; background: #1a2350; border-radius: 4px; overflow: hidden; }
+.meter-fill { height: 100%; background: linear-gradient(90deg, #34e0e0, #ffb454); border-radius: 4px; }
+.meter-value { font-family: "Space Grotesk", sans-serif; font-size: 0.82rem; color: #edeffb; width: 28px; text-align: right; }
+
+/* Cyan keyboard-focus outline, for accessibility (Tab key navigation) */
+a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible {
+  outline: 2px solid #34e0e0;
+  outline-offset: 2px;
+}
+
+/* Small-screen (phone) adjustments: tighter side padding, less top padding under navbar */
+@media (max-width: 760px) {
+  .container { padding: 0 18px; }
+  main { padding-top: 92px; }
+}
+
+/* Respect "reduce motion" accessibility setting (e.g. disables the bouncing bars on Home) */
+@media (prefers-reduced-motion: reduce) {
+  * { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+}

@@ -1,0 +1,86 @@
+/* =========================================================
+   home.css — index.html (Home page) only
+   ========================================================= */
+
+/* Top hero section: headline + buttons on the left, illustration on the right */
+.hero {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 40px;
+  align-items: center;
+  padding-bottom: 56px;
+  border-bottom: 1px solid #2a3268;
+  margin-bottom: 48px;
+}
+.hero h1 { margin-bottom: 16px; }
+.hero p.lead { font-size: 1.05rem; max-width: 480px; }
+
+/* The "View Statistics" / "Manage Data" button row under the hero text */
+.hero-actions { display: flex; gap: 12px; margin-top: 24px; flex-wrap: wrap; }
+
+/* The dark rounded box on the right of the hero that holds the vinyl/waveform image */
+.hero-visual {
+  background: #121a3f;
+  border: 1px solid #2a3268;
+  border-radius: 22px;
+  padding: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.hero-visual img { width: 100%; max-width: 320px; }
+
+/* (Currently unused decorative bars — kept in case you want a CSS-only waveform instead of the SVG image) */
+.bars { display: flex; align-items: flex-end; gap: 6px; height: 90px; }
+.bars span {
+  flex: 1;
+  background: linear-gradient(180deg, #34e0e0, #ffb454);
+  border-radius: 3px;
+  animation: pulse 1.6s ease-in-out infinite;
+}
+@keyframes pulse {
+  0%, 100% { transform: scaleY(0.4); }
+  50% { transform: scaleY(1); }
+}
+
+/* The 4 stat cards row: "Tracks catalogued", "Average popularity", "Leading genre", "Total streams" */
+.stats-grid {
+  grid-template-columns: repeat(4, 1fr);
+  margin-bottom: 56px;
+}
+.stat-card { text-align: left; }
+.stat-card .stat-label {
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: #a6cf9a;
+  margin-bottom: 8px;
+}
+.stat-card .stat-value {
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 2rem;
+  font-weight: 700;
+  color: #edeffb;
+}
+.stat-card .stat-value.accent-amber { color: #ffb454; } /* "Leading genre" number */
+.stat-card .stat-value.accent-cyan { color: #34e0e0; }   /* "Average popularity" number */
+
+/* The "Now Charting" row of 3 track cards near the bottom of Home */
+.charting-grid { grid-template-columns: repeat(3, 1fr); }
+.track-card { display: flex; flex-direction: column; gap: 14px; }
+.track-card .rank {
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 0.78rem;
+  color: #ffb454;
+  letter-spacing: 0.06em;
+}
+.track-card h3 { margin: 0; }
+.track-card .artist { color: #9aa1cf; font-size: 0.88rem; margin: -8px 0 4px; }
+.track-card .badges { display: flex; gap: 6px; flex-wrap: wrap; }
+
+/* Tablet/phone: stack the hero, show 2 stat cards per row, stack the track cards */
+@media (max-width: 900px) {
+  .hero { grid-template-columns: 1fr; }
+  .stats-grid { grid-template-columns: repeat(2, 1fr); }
+  .charting-grid { grid-template-columns: 1fr; }
+}

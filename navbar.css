@@ -1,0 +1,116 @@
+/* =========================================================
+   navbar.css
+   The fixed top header (logo + nav links + mobile menu
+   button) and the bottom footer. Same on every page.
+   ========================================================= */
+
+/* The fixed dark bar pinned to the top of every page */
+.site-header {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  height: 72px;
+  z-index: 50;
+  background: rgba(10, 14, 39, 0.86);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid #2a3268;
+}
+/* Centers the logo + nav links inside the header bar */
+.site-header .container {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* "Stereo Pulse" logo (icon + wordmark) on the left of the navbar */
+.logo { display: flex; align-items: center; gap: 10px; }
+.logo img { width: 30px; height: 30px; }
+.logo-text {
+  font-family: "Space Grotesk", sans-serif;
+  font-weight: 700;
+  font-size: 1.05rem;
+  color: #edeffb;
+  letter-spacing: -0.01em;
+}
+.logo-text span { color: #ffb454; } /* the amber "Pulse" half of the wordmark */
+
+/* The 5 navigation links: Home / Data Management / Search / Statistics / About */
+.nav-links { display: flex; align-items: center; gap: 6px; list-style: none; margin: 0; padding: 0; }
+.nav-link {
+  font-family: "Plus Jakarta Sans", sans-serif;
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: #9aa1cf;
+  padding: 9px 14px;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: color 0.15s ease, background 0.15s ease;
+}
+.nav-link:hover { color: #edeffb; background: #1a2350; text-decoration: none; }
+.nav-link.active { color: #0a0e27; background: #34e0e0; } /* highlight for whichever page is currently open */
+
+/* The hamburger (☰) button that only shows on small screens */
+.nav-toggle {
+  display: none;
+  background: none;
+  border: 1px solid #2a3268;
+  border-radius: 8px;
+  width: 40px; height: 40px;
+  cursor: pointer;
+  position: relative;
+}
+/* The 3 lines of the hamburger icon, drawn with one span + two pseudo-elements */
+.nav-toggle span, .nav-toggle span::before, .nav-toggle span::after {
+  content: "";
+  position: absolute;
+  left: 9px; right: 9px;
+  height: 2px;
+  background: #edeffb;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+.nav-toggle span { top: 19px; }
+.nav-toggle span::before { content: ""; top: -6px; left: 0; right: 0; position: absolute; }
+.nav-toggle span::after { content: ""; top: 6px; left: 0; right: 0; position: absolute; }
+/* Turns the hamburger into an "X" when the mobile menu is open */
+.nav-toggle.open span { opacity: 0; }
+.nav-toggle.open span::before { transform: translateY(6px) rotate(45deg); }
+.nav-toggle.open span::after { transform: translateY(-6px) rotate(-45deg); }
+
+/* Phone screens: hide the inline nav, show the hamburger, nav links drop down as a panel */
+@media (max-width: 760px) {
+  .nav-toggle { display: block; }
+  .nav-links {
+    position: absolute;
+    top: 72px;
+    left: 0; right: 0;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 2px;
+    background: #121a3f;
+    border-bottom: 1px solid #2a3268;
+    padding: 10px 18px 16px;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.25s ease;
+  }
+  .nav-links.open { max-height: 320px; } /* JS toggles this class to slide the menu open */
+  .nav-link { padding: 12px 10px; }
+}
+
+/* The bottom footer strip: "Stereo Pulse · ... · Student ID" + About/Chart.js links */
+.site-footer {
+  border-top: 1px solid #2a3268;
+  padding: 28px 0;
+  margin-top: 40px;
+}
+.site-footer .container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.footer-note { font-size: 0.83rem; color: #9aa1cf; }
+.footer-links { display: flex; gap: 18px; }
+.footer-links a { font-size: 0.83rem; color: #9aa1cf; }
+.footer-links a:hover { color: #34e0e0; }

@@ -1,0 +1,71 @@
+/* =========================================================
+   data-management.css — data-management.html only
+   ========================================================= */
+
+/* Two-column layout: the Add/Edit form on the left, the table on the right */
+.dm-layout {
+  display: grid;
+  grid-template-columns: 340px 1fr;
+  gap: 24px;
+  align-items: flex-start;
+}
+
+/* The form card stays visible (sticky) while you scroll the table on the right */
+.form-card { position: sticky; top: 96px; }
+.form-card h2 { font-size: 1.1rem; } /* "Add a Track" / "Edit Track" heading */
+
+/* Row holding the form's submit button (and Cancel, when editing) */
+.form-actions { display: flex; gap: 10px; margin-top: 6px; }
+
+/* The 6 genre checkboxes (Pop, Hip-Hop, R&B, Electronic, Rock, Afrobeats), 2 per row */
+.genre-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 8px;
+  margin-bottom: 4px;
+}
+
+/* "Track Catalog" heading + the "X tracks" pill above the table */
+.table-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 14px;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.table-toolbar h2 { margin: 0; font-size: 1.1rem; }
+.count-pill {
+  font-size: 0.78rem;
+  color: #9aa1cf;
+  background: #1a2350;
+  padding: 4px 10px;
+  border-radius: 999px;
+}
+
+/* The Edit / Delete button pair inside each table row */
+.row-actions { display: flex; gap: 6px; }
+
+/* The status badges cell in the table (Top Charts / Not Charting / Low Reach / Trending) */
+.badges-cell { display: flex; gap: 5px; flex-wrap: wrap; }
+
+/* The amber "you are editing an existing track" banner above the form (with its Cancel button) */
+.editing-banner {
+  display: none;
+  background: rgba(255, 180, 84, 0.16);
+  color: #ffb454;
+  border: 1px solid #ffb454;
+  border-radius: 8px;
+  padding: 9px 12px;
+  font-size: 0.82rem;
+  margin-bottom: 14px;
+  align-items: center;
+  justify-content: space-between;
+}
+.editing-banner.show { display: flex; } /* JS adds the .show class when "Edit" is clicked */
+
+/* Phone/tablet: stack the form above the table instead of side-by-side */
+@media (max-width: 900px) {
+  .dm-layout { grid-template-columns: 1fr; }
+  .form-card { position: static; }
+}

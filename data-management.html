@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Data Management — Stereo Pulse</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="base.css">
+  <link rel="stylesheet" href="navbar.css">
+  <link rel="stylesheet" href="data-management.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="container">
+      <a href="index.html" class="logo">
+        <img src="logo.svg" alt="Stereo Pulse logo">
+        <span class="logo-text">Stereo<span>Pulse</span></span>
+      </a>
+      <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation"><span></span></button>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="index.html" class="nav-link">Home</a></li>
+        <li><a href="data-management.html" class="nav-link">Data Management</a></li>
+        <li><a href="search.html" class="nav-link">Search</a></li>
+        <li><a href="statistics.html" class="nav-link">Statistics</a></li>
+        <li><a href="about.html" class="nav-link">About</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <main>
+    <div class="container">
+
+      <div class="section-head">
+        <span class="eyebrow">Data Management</span>
+        <h2>Add, edit, and delete tracks</h2>
+        <p class="muted">All changes are saved to <code>localStorage</code> instantly.</p>
+      </div>
+
+      <div class="dm-layout">
+
+        <div class="card form-card">
+          <h2 id="form-title">Add a Track</h2>
+
+          <div class="editing-banner" id="editing-banner">
+            <span>Editing an existing track</span>
+            <button type="button" class="btn btn-ghost btn-sm" id="f-cancel">Cancel</button>
+          </div>
+
+          <form id="track-form">
+            <div class="field">
+              <label for="f-title">Title</label>
+              <input type="text" id="f-title" placeholder="e.g. Midnight Echo" required>
+            </div>
+
+            <div class="field">
+              <label for="f-artist">Artist</label>
+              <input type="text" id="f-artist" placeholder="e.g. Lira Voss" required>
+            </div>
+
+            <div class="field">
+              <label>Genres (max 3 — Business Rule 3)</label>
+              <div class="genre-grid" id="genre-grid"></div>
+            </div>
+
+            <div class="field-row">
+              <div class="field">
+                <label for="f-year">Release year</label>
+                <input type="number" id="f-year" min="1950" max="2026" required>
+              </div>
+              <div class="field">
+                <label for="f-platform">Platform</label>
+                <select id="f-platform"></select>
+              </div>
+            </div>
+
+            <div class="field-row">
+              <div class="field">
+                <label for="f-popularity">Popularity (0–100)</label>
+                <input type="number" id="f-popularity" min="0" max="100" required>
+              </div>
+              <div class="field">
+                <label for="f-streams">Streams (millions)</label>
+                <input type="number" id="f-streams" min="0" step="0.1" required>
+              </div>
+            </div>
+
+            <div class="field-row">
+              <div class="field">
+                <label for="f-duration">Duration (seconds)</label>
+                <input type="number" id="f-duration" min="1" required>
+              </div>
+              <div class="field">
+                <label for="f-growth">Monthly growth (%)</label>
+                <input type="number" id="f-growth" step="0.1" required>
+              </div>
+            </div>
+
+            <p class="error-text" id="form-error"></p>
+
+            <div class="form-actions">
+              <button type="submit" class="btn btn-primary" id="f-submit">Add Track</button>
+            </div>
+          </form>
+        </div>
+
+        <div>
+          <div class="table-toolbar">
+            <h2>Track Catalog</h2>
+            <span class="count-pill" id="track-count">0 tracks</span>
+          </div>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Title</th>
+                  <th>Artist</th>
+                  <th>Genres</th>
+                  <th>Year</th>
+                  <th>Popularity</th>
+                  <th>Streams</th>
+                  <th>Status</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody id="track-table-body"></tbody>
+            </table>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <span class="footer-note">Stereo Pulse · Music Popularity Analysis System · Student ID 20231019</span>
+      <div class="footer-links">
+        <a href="about.html">About this project</a>
+        <a href="https://www.chartjs.org" target="_blank" rel="noopener">Chart.js</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="data.js"></script>
+  <script src="storage.js"></script>
+  <script src="navbar.js"></script>
+  <script src="data-management.js"></script>
+</body>
+</html>

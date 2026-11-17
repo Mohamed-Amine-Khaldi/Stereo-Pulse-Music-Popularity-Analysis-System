@@ -1,0 +1,46 @@
+/* =========================================================
+   about.css — about.html only
+   ========================================================= */
+
+/* Two-column layout: rule cards on the left, project info + tech stack on the right */
+.about-layout {
+  display: grid;
+  grid-template-columns: 1.3fr 0.7fr;
+  gap: 28px;
+}
+
+/* The stacked list of business-rule cards (Rule 1, 2, 3, + bonus) */
+.rules-grid { grid-template-columns: 1fr; margin-top: 18px; }
+.rule-card { display: flex; gap: 16px; }
+.rule-num {
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #ffb454;
+  min-width: 38px;
+} /* the big "01", "02", "03", "+" number on each rule card */
+.rule-card h3 { margin-bottom: 6px; } /* rule title, e.g. "Top Charts eligibility" */
+
+/* The "Project info" key/value list (Topic, Student ID, Dataset size, Storage, Pages) */
+.meta-list { display: grid; gap: 12px; margin-top: 16px; }
+.meta-row { display: flex; justify-content: space-between; font-size: 0.88rem; padding-bottom: 10px; border-bottom: 1px solid #2a3268; }
+.meta-row:last-child { border-bottom: none; padding-bottom: 0; }
+.meta-row .k { color: #9aa1cf; }   /* the label side, e.g. "Topic" */
+.meta-row .v { font-weight: 600; } /* the value side, e.g. "#6 — Music Popularity Analysis" */
+
+/* The "Built with" tech pills (HTML5, CSS3, JavaScript, localStorage, Chart.js) */
+.tech-pills { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 14px; }
+.tech-pill {
+  font-size: 0.78rem;
+  font-weight: 600;
+  background: #1a2350;
+  border: 1px solid #2a3268;
+  padding: 5px 12px;
+  border-radius: 999px;
+  color: #9aa1cf;
+}
+
+/* Phone/tablet: stack the two columns */
+@media (max-width: 860px) {
+  .about-layout { grid-template-columns: 1fr; }
+}

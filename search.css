@@ -1,0 +1,47 @@
+/* =========================================================
+   search.css — search.html only
+   ========================================================= */
+
+/* The filter row at the top: search box + genre/platform/sort dropdowns + Reset button */
+.filter-bar {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  margin-bottom: 24px;
+}
+.filter-bar .field { margin-bottom: 0; min-width: 160px; }
+.filter-bar .field.grow { flex: 1; min-width: 220px; } /* the "Title or artist" text box stretches to fill space */
+.filter-bar .field-actions { display: flex; gap: 10px; } /* wraps the "Reset" button */
+
+/* "Results" heading + the "X results" pill above the results table */
+.results-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 14px;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.results-head .count-pill {
+  font-size: 0.78rem;
+  color: #9aa1cf;
+  background: #1a2350;
+  padding: 4px 10px;
+  border-radius: 999px;
+}
+
+/* The "No tracks match" empty-state box (icon + message), shown when filters return 0 results */
+.empty-state {
+  text-align: center;
+  padding: 60px 20px;
+  border: 1px dashed #2a3268;
+  border-radius: 14px;
+}
+.empty-state img { width: 84px; margin: 0 auto 16px; opacity: 0.85; }
+.empty-state h3 { margin-bottom: 6px; }
+
+/* Phone screens: each filter field takes the full row width */
+@media (max-width: 700px) {
+  .filter-bar .field { min-width: 100%; }
+}

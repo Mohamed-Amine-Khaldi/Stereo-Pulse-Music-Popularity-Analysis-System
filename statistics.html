@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Statistics — Stereo Pulse</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="base.css">
+  <link rel="stylesheet" href="navbar.css">
+  <link rel="stylesheet" href="statistics.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="container">
+      <a href="index.html" class="logo">
+        <img src="logo.svg" alt="Stereo Pulse logo">
+        <span class="logo-text">Stereo<span>Pulse</span></span>
+      </a>
+      <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation"><span></span></button>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="index.html" class="nav-link">Home</a></li>
+        <li><a href="data-management.html" class="nav-link">Data Management</a></li>
+        <li><a href="search.html" class="nav-link">Search</a></li>
+        <li><a href="statistics.html" class="nav-link">Statistics</a></li>
+        <li><a href="about.html" class="nav-link">About</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <main>
+    <div class="container">
+
+      <div class="section-head">
+        <span class="eyebrow">Data Visualization</span>
+        <h2>Statistics</h2>
+        <p class="muted" id="chart-scope-note">Showing all tracks.</p>
+      </div>
+
+      <form class="card stats-toolbar" onsubmit="return false;">
+        <div class="field">
+          <label for="st-genre-filter">Filter by genre</label>
+          <select id="st-genre-filter">
+            <option value="all">All genres</option>
+          </select>
+        </div>
+        <div class="field">
+          <button type="button" class="btn btn-ghost" id="st-reset">Reset filter</button>
+        </div>
+      </form>
+
+      <div class="charts-grid grid">
+        <div class="card chart-card">
+          <h3>Top tracks by popularity</h3>
+          <p class="chart-note muted">Bar chart — only Top-Charts-eligible tracks (Business Rule 1: score ≥ 50).</p>
+          <canvas id="barChart"></canvas>
+        </div>
+        <div class="card chart-card">
+          <h3>Genre distribution</h3>
+          <p class="chart-note muted">Pie chart — share of catalog tagged per genre.</p>
+          <canvas id="pieChart"></canvas>
+        </div>
+        <div class="card chart-card chart-wide">
+          <h3>Average popularity by release year</h3>
+          <p class="chart-note muted">Line chart — trend across the catalog's release years.</p>
+          <canvas id="lineChart"></canvas>
+        </div>
+      </div>
+
+      <div class="card compare-panel">
+        <span class="eyebrow">Compare</span>
+        <h2>Genre vs. genre</h2>
+        <div class="compare-grid">
+          <div class="compare-card" id="cmp-card-a">
+            <div class="field">
+              <label for="cmp-a">Genre A</label>
+              <select id="cmp-a">
+                <option value="all">All genres</option>
+              </select>
+            </div>
+          </div>
+          <span class="compare-vs">VS</span>
+          <div class="compare-card" id="cmp-card-b">
+            <div class="field">
+              <label for="cmp-b">Genre B</label>
+              <select id="cmp-b">
+                <option value="all">All genres</option>
+              </select>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <span class="footer-note">Stereo Pulse · Music Popularity Analysis System · Student ID 20231019</span>
+      <div class="footer-links">
+        <a href="about.html">About this project</a>
+        <a href="https://www.chartjs.org" target="_blank" rel="noopener">Chart.js</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js"></script>
+  <script src="data.js"></script>
+  <script src="storage.js"></script>
+  <script src="navbar.js"></script>
+  <script src="statistics.js"></script>
+</body>
+</html>

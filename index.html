@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Stereo Pulse — Music Popularity Analysis System</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="base.css">
+  <link rel="stylesheet" href="navbar.css">
+  <link rel="stylesheet" href="home.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="container">
+      <a href="index.html" class="logo">
+        <img src="logo.svg" alt="Stereo Pulse logo">
+        <span class="logo-text">Stereo<span>Pulse</span></span>
+      </a>
+      <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation"><span></span></button>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="index.html" class="nav-link">Home</a></li>
+        <li><a href="data-management.html" class="nav-link">Data Management</a></li>
+        <li><a href="search.html" class="nav-link">Search</a></li>
+        <li><a href="statistics.html" class="nav-link">Statistics</a></li>
+        <li><a href="about.html" class="nav-link">About</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <main>
+    <div class="container">
+
+      <section class="hero">
+        <div class="hero-content">
+          <span class="eyebrow">Music Popularity Analysis System</span>
+          <h1>Track what the world is streaming, one chart at a time.</h1>
+          <p class="lead">Stereo Pulse catalogs 19 tracks across six genres and turns popularity score, stream count, and growth rate into a live, editable dashboard.</p>
+          <div class="hero-actions">
+            <a href="statistics.html" class="btn btn-primary">View Statistics</a>
+            <a href="data-management.html" class="btn btn-secondary">Manage Data</a>
+          </div>
+        </div>
+        <div class="hero-visual">
+          <img src="hero-wave.svg" alt="Illustration of a vinyl record above a sound waveform">
+        </div>
+      </section>
+
+      <section class="stats-grid grid">
+        <div class="card stat-card">
+          <div class="stat-label">Tracks catalogued</div>
+          <div class="stat-value" id="stat-total">—</div>
+        </div>
+        <div class="card stat-card">
+          <div class="stat-label">Average popularity</div>
+          <div class="stat-value accent-cyan" id="stat-popularity">—</div>
+        </div>
+        <div class="card stat-card">
+          <div class="stat-label">Leading genre</div>
+          <div class="stat-value accent-amber" id="stat-genre">—</div>
+        </div>
+        <div class="card stat-card">
+          <div class="stat-label">Total streams</div>
+          <div class="stat-value" id="stat-streams">—</div>
+        </div>
+      </section>
+
+      <section class="section-head">
+        <span class="eyebrow">Now Charting</span>
+        <h2>Top 3 tracks by popularity</h2>
+        <p class="muted">Only tracks scoring 50 or above qualify for the charts — Business Rule 1.</p>
+      </section>
+      <section class="charting-grid grid" id="featured-tracks"></section>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <span class="footer-note">Stereo Pulse · Music Popularity Analysis System · Student ID 20231019</span>
+      <div class="footer-links">
+        <a href="about.html">About this project</a>
+        <a href="https://www.chartjs.org" target="_blank" rel="noopener">Chart.js</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="data.js"></script>
+  <script src="storage.js"></script>
+  <script src="navbar.js"></script>
+  <script src="home.js"></script>
+</body>
+</html>
